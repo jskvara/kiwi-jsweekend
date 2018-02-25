@@ -50,7 +50,6 @@ export interface FlightsProps {
 
 export const Character: React.SFC<FlightsProps> = props => {
     const { from, to, date } = props;
-
     return (
         <FlightsQuery query={findFlightsQuery} variables={{from, to, date}}>
             {({ loading, data, error }) => {
@@ -64,7 +63,7 @@ export const Character: React.SFC<FlightsProps> = props => {
                     return <div>No data</div>;
                 }
                 const { allFlights } = data;
-                if (allFlights === null || allFlights.edges === null) {
+                if (allFlights === null || allFlights.edges === null || allFlights.edges.length < 1) {
                     return <div>No data</div>;
                 }
 
