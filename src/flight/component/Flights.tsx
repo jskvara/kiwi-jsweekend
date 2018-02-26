@@ -48,7 +48,7 @@ export interface FlightsProps {
     date: string;
 }
 
-export const Character: React.SFC<FlightsProps> = props => {
+export const Flights: React.SFC<FlightsProps> = props => {
     const { from, to, date } = props;
     return (
         <FlightsQuery query={findFlightsQuery} variables={{from, to, date}}>
@@ -83,4 +83,4 @@ export const Character: React.SFC<FlightsProps> = props => {
     );
 };
 
-export default Character;
+export default Flights;

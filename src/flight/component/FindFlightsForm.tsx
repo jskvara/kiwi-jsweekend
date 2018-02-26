@@ -1,4 +1,5 @@
 import * as React from 'react';
+import LocationAutosuggestInput from './LocationAutosuggestInput';
 
 interface Props {
     onSubmit: (data: object) => void;
@@ -30,21 +31,23 @@ class FindFlightsForm extends React.Component<Props, State> {
         return (
             <form onSubmit={this.onSubmit}>
                 <br />
-                <div>
-                    <label htmlFor="from">From: </label>
-                    <input id="from" type="text" onChange={this.onFromChange} />
-                </div>
-                <div>
-                    <label htmlFor="to">To: </label>
-                    <input id="to" type="text" onChange={this.onToChange}/>
-                </div>
-                <div>
-                    <label htmlFor="date">Date: </label>
+                <label>
+                    From:
+                    <LocationAutosuggestInput id="from" onChange={this.onFromChange} />
+                </label>
+                <br />
+                <label>
+                    To:
+                    <LocationAutosuggestInput id="to" onChange={this.onToChange} />
+                </label>
+                <br />
+                <label>
+                    Date:<br />
                     <input id="date" type="date" onChange={this.onDateChange}/>
-                </div>
-                <div>
-                    <input type="submit"/>
-                </div>
+                </label>
+                <br />
+                <br />
+                <input type="submit"/>
                 <div style={{color: 'red'}}>
                     {this.state.errors.map((error, key) => <div key={key}>{error}</div>)}
                 </div>
@@ -53,15 +56,15 @@ class FindFlightsForm extends React.Component<Props, State> {
         );
     }
 
-    private onFromChange(event: React.SyntheticEvent<HTMLInputElement>) {
+    private onFromChange(value: string) {
         this.setState({
-            from: event.currentTarget.value,
+            from: value,
         });
     }
 
-    private onToChange(event: React.SyntheticEvent<HTMLInputElement>) {
+    private onToChange(value: string) {
         this.setState({
-            to: event.currentTarget.value,
+            to: value,
         });
     }
 

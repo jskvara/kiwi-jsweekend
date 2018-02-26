@@ -38,3 +38,20 @@ export interface FindFlightsQuery {
     } | null > | null,
   } | null,
 };
+
+export interface FindLocationsQueryVariables {
+  search: string,
+};
+
+export interface FindLocationsQuery {
+  // Search for airports, cities, countries. You can search by location name, radius on the map or rectangle on the map. If you do not specify one of these search inputs then the alphabetical dump of all locations is returned.
+  allLocations:  {
+    // A list of edges.
+    edges:  Array< {
+      // The item at the end of the edge
+      node:  {
+        name: string | null,
+      } | null,
+    } | null > | null,
+  } | null,
+};
