@@ -5,6 +5,8 @@ export interface FindFlightsQueryVariables {
   from: string,
   to: string,
   date: string,
+  after?: string | null,
+  first?: number | null,
 };
 
 export interface FindFlightsQuery {
@@ -36,6 +38,13 @@ export interface FindFlightsQuery {
         } | null,
       } | null,
     } | null > | null,
+    // Information to aid in pagination.
+    pageInfo:  {
+      // When paginating forwards, are there more items?
+      hasNextPage: boolean,
+      // When paginating forwards, the cursor to continue.
+      endCursor: string | null,
+    },
   } | null,
 };
 
